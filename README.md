@@ -25,10 +25,10 @@ Support for XPPython3 and Lua but only fully built out and tested for XPPython3.
 
 ## Install:
 
-Easiest way is to prompt your agent: *"Install MCP xp_developer_kb-1.0.0-py3-none-any.whl"*
+Easiest way is to prompt your agent: *"Install MCP xp_developer_kb-1.0.1-py3-none-any.whl"*
 
 ```sh
-uv tool install https://github.com/stu-speed/xp-developer-kb-releases/releases/download/v1.0.0/xp_developer_kb-1.0.0-py3-none-any.whl
+uv tool install https://github.com/stu-speed/xp-developer-kb-releases/releases/download/v1.0.1/xp_developer_kb-1.0.1-py3-none-any.whl
 opencode mcp add xplane-kb --global -- xp-developer-kb mcp
 ```
 

@@ -6,8 +6,6 @@ An MCP Server with a hybrid OKF/RAG knowledge base of datarefs, sdk-api, sample 
 
 Support for XPPython3 and Lua but only fully built out and tested for XPPython3.
 
-### On the agent app rooftop
-
 > **Neo:** Can you code that thing?  
 > **Trinity:** Not yet.  
 > *— (Trinity calls up Huggingface)*  

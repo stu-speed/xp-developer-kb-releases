@@ -6,14 +6,16 @@ An MCP Server with a hybrid OKF/RAG knowledge base of datarefs, sdk-api, sample 
 
 Support for XPPython3 and Lua but only fully built out and tested for XPPython3.
 
-## On the agent app rooftop
+### On the agent app rooftop
 
-> **Neo:** Can you code that thing?
-> **Trinity:** Not yet.
-> *(Trinity calls up Huggingface)*
-> **Tank:** Operator.
-> **Trinity:** Tank. I need a OKF/RAG for Xppython3. Hurry.
-> *(Tank uploads the MCP, and Opencode's screen flutters as it absorbs the knowledge)*
+> **Neo:** Can you code that thing?  
+> **Trinity:** Not yet.  
+> *— (Trinity calls up Huggingface)*  
+>   
+> **Tank:** Operator.  
+> **Trinity:** Tank. I need a OKF/RAG for Xppython3. Hurry.  
+> *— (Tank uploads the MCP, and Opencode's screen flutters as it absorbs the knowledge)*  
+>   
 > **Trinity:** Let's go.
 
 ## Highlights:

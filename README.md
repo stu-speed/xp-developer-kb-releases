@@ -6,6 +6,16 @@ An MCP Server with a hybrid OKF/RAG knowledge base of datarefs, sdk-api, sample 
 
 Support for XPPython3 and Lua but only fully built out and tested for XPPython3.
 
+> **Neo:** Can you code that thing?  
+> **Trinity:** Not yet.  
+> *— (Trinity calls up Huggingface)*  
+>   
+> **Tank:** Operator.  
+> **Trinity:** Tank. I need a OKF/RAG for Xppython3. Hurry.  
+> *— (Tank uploads the MCP, and Opencode's screen flutters as it absorbs the knowledge)*  
+>  
+> **Trinity:** Let's go.
+
 ## What's new in 1.0.2 (2026-11-16):
 
 - **Usage is per-dataref and language-weighted.** The ~400 datarefs the
@@ -29,15 +39,6 @@ Support for XPPython3 and Lua but only fully built out and tested for XPPython3.
   encoding; builds refuse a plain-HTTP WAN embedding URL (payloads
   travel only over the encrypted transport).
 
-> **Neo:** Can you code that thing?  
-> **Trinity:** Not yet.  
-> *— (Trinity calls up Huggingface)*  
->   
-> **Tank:** Operator.  
-> **Trinity:** Tank. I need a OKF/RAG for Xppython3. Hurry.  
-> *— (Tank uploads the MCP, and Opencode's screen flutters as it absorbs the knowledge)*  
->  
-> **Trinity:** Let's go.
 
 ## Highlights:
 

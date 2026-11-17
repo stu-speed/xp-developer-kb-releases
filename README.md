@@ -16,30 +16,6 @@ Support for XPPython3 and Lua but only fully built out and tested for XPPython3.
 >  
 > **Trinity:** Let's go.
 
-## What's new in 1.0.2 (2026-11-16):
-
-- **Usage is per-dataref and language-weighted.** The ~400 datarefs the
-  corpus's example code actually uses have their own
-  `datarefs/used/<name>` pages, each carrying the master-list row and
-  its `Used in examples` section grouped `Python:` / `Lua:` / `C:`
-  (Python first). A Python host's `xp.*` calls link the served
-  per-method binding pages (`xppython3-sdkapi/*`) instead of the C
-  `sdk-api` reference (provenance-only, not published here). At
-  retrieval time, usage-matched language boosts those pages and
-  exclusively-other-language usage demotes them — scoped to the
-  datarefs and sdk-api layers only; curated concepts, patterns, and
-  bridges are host-agnostic and never weighted.
-- **Explicit language tags** on every example concept (python / lua /
-  c) — language is on the concept, not just in the layer name.
-- **RAG doc identity is the bundle-relative path** — same-named files
-  in different subdirectories no longer silently delete each other's
-  chunks; incremental sync re-embeds exactly what changed.
-- **Builds never encode locally**: an unreachable embedding server
-  fails the build loudly instead of downgrading to slow in-process
-  encoding; builds refuse a plain-HTTP WAN embedding URL (payloads
-  travel only over the encrypted transport).
-
-
 ## Highlights:
 
 - **Hybrid lookup** — BM25 over the bundle (primary) fused with dense retrieval over the shipped RAG index (secondary); custom tuned to the dataset.
@@ -76,6 +52,29 @@ opencode mcp add xplane-kb --global -- xp-developer-kb mcp
 - Examples: 197 working plugins — 80 XPPython3 demos verbatim (MIT), 117 FlyWithLua scripts by pinned link — each cross-linked to every API and dataref its code uses.
 - Curated: 37 concepts (17 patterns, 7 cross-host bridges, 13 canonical definitions).
 - Total: 1,187 shipped concepts; 200-test gate.
+
+## What's new in 1.0.2 (2026-11-16):
+
+- **Usage is per-dataref and language-weighted.** The ~400 datarefs the
+  corpus's example code actually uses have their own
+  `datarefs/used/<name>` pages, each carrying the master-list row and
+  its `Used in examples` section grouped `Python:` / `Lua:` / `C:`
+  (Python first). A Python host's `xp.*` calls link the served
+  per-method binding pages (`xppython3-sdkapi/*`) instead of the C
+  `sdk-api` reference (provenance-only, not published here). At
+  retrieval time, usage-matched language boosts those pages and
+  exclusively-other-language usage demotes them — scoped to the
+  datarefs and sdk-api layers only; curated concepts, patterns, and
+  bridges are host-agnostic and never weighted.
+- **Explicit language tags** on every example concept (python / lua /
+  c) — language is on the concept, not just in the layer name.
+- **RAG doc identity is the bundle-relative path** — same-named files
+  in different subdirectories no longer silently delete each other's
+  chunks; incremental sync re-embeds exactly what changed.
+- **Builds never encode locally**: an unreachable embedding server
+  fails the build loudly instead of downgrading to slow in-process
+  encoding; builds refuse a plain-HTTP WAN embedding URL (payloads
+  travel only over the encrypted transport).
 
 ## License:
 

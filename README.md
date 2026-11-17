@@ -6,6 +6,29 @@ An MCP Server with a hybrid OKF/RAG knowledge base of datarefs, sdk-api, sample 
 
 Support for XPPython3 and Lua but only fully built out and tested for XPPython3.
 
+## What's new in 1.0.2 (2026-11-16):
+
+- **Usage is per-dataref and language-weighted.** The ~400 datarefs the
+  corpus's example code actually uses have their own
+  `datarefs/used/<name>` pages, each carrying the master-list row and
+  its `Used in examples` section grouped `Python:` / `Lua:` / `C:`
+  (Python first). A Python host's `xp.*` calls link the served
+  per-method binding pages (`xppython3-sdkapi/*`) instead of the C
+  `sdk-api` reference (provenance-only, not published here). At
+  retrieval time, usage-matched language boosts those pages and
+  exclusively-other-language usage demotes them — scoped to the
+  datarefs and sdk-api layers only; curated concepts, patterns, and
+  bridges are host-agnostic and never weighted.
+- **Explicit language tags** on every example concept (python / lua /
+  c) — language is on the concept, not just in the layer name.
+- **RAG doc identity is the bundle-relative path** — same-named files
+  in different subdirectories no longer silently delete each other's
+  chunks; incremental sync re-embeds exactly what changed.
+- **Builds never encode locally**: an unreachable embedding server
+  fails the build loudly instead of downgrading to slow in-process
+  encoding; builds refuse a plain-HTTP WAN embedding URL (payloads
+  travel only over the encrypted transport).
+
 > **Neo:** Can you code that thing?  
 > **Trinity:** Not yet.  
 > *— (Trinity calls up Huggingface)*  
@@ -13,7 +36,7 @@ Support for XPPython3 and Lua but only fully built out and tested for XPPython3.
 > **Tank:** Operator.  
 > **Trinity:** Tank. I need a OKF/RAG for Xppython3. Hurry.  
 > *— (Tank uploads the MCP, and Opencode's screen flutters as it absorbs the knowledge)*  
->   
+>  
 > **Trinity:** Let's go.
 
 ## Highlights:
@@ -25,10 +48,10 @@ Support for XPPython3 and Lua but only fully built out and tested for XPPython3.
 
 ## Install:
 
-Easiest way is to prompt your agent: *"Install MCP xp_developer_kb-1.0.1-py3-none-any.whl"*
+Easiest way is to prompt your agent: *"Install MCP xp_developer_kb-1.0.2-py3-none-any.whl"*
 
 ```sh
-uv tool install https://github.com/stu-speed/xp-developer-kb-releases/releases/download/v1.0.1/xp_developer_kb-1.0.1-py3-none-any.whl
+uv tool install https://github.com/stu-speed/xp-developer-kb-releases/releases/download/v1.0.2/xp_developer_kb-1.0.2-py3-none-any.whl
 opencode mcp add xplane-kb --global -- xp-developer-kb mcp
 ```
 

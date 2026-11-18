@@ -22,6 +22,7 @@ Support for XPPython3 and Lua but only fully built out and tested for XPPython3.
 - **Language heat** — naming a host language re-ranks the corpus toward that host's examples and away from the other host's pages.
 - **`lint_code`** — twelve XPPython3 rules distilled from the upstream guides (entry contract, lifecycle pairing, geometry, flight-loop return semantics, weather datarefs, …), each citing the concept that explains the rule. When serving with the corpus, it also validates usage against the dataset itself: an invented `xp.*` API name or a dataref path that isn't in the master list is an error before the plugin ever loads.
 - **The brief** — every session starts with the exact tool syntax and the plugin entry contract (`PI_<Name>.py`, `PythonInterface`, triple start return, Enable returns 1).
+- **Project mounts** — launch your session from a project that keeps its design notes as an OKF bundle (a `specs/` folder with an `index.md` declaring `okf_version`) and the server mounts it automatically: your project's own concepts join every search, read by name (`<project>/<concept>`). No copying, no config, no second server — and it stays clearly separated from the X-Plane corpus.
 
 ## Install:
 
@@ -47,14 +48,31 @@ opencode mcp add xplane-kb --global -- xp-developer-kb mcp
 ### COUNTS (Guns. Lots of guns.)
 
 - Datarefs: 6,216 master-list rows (6,188 unique paths) in 119 namespace tables — name, type, access, units, first version, platform, accessor note for every row.
-- API methods: 589 `xp.*` binding pages (every documented function, constant, and type, full signature) plus 27 module guides.
-- Doc guides: 202 — 120 XPPython3 prose pages (author-granted, verbatim), 68 XLua SDK pages (MIT), 14 Laminar article link cards.
+- API methods: 658 `xp.*` binding pages (every documented function, constant, and type, full signature) plus 28 module guides.
+- Doc guides: 218 — 135 XPPython3 prose pages (author-granted, verbatim), 69 XLua SDK pages (MIT), 14 Laminar article link cards.
 - Examples: 197 working plugins — 80 XPPython3 demos verbatim (MIT), 117 FlyWithLua scripts by pinned link — each cross-linked to every API and dataref its code uses.
 - Curated: 37 concepts (17 patterns, 7 cross-host bridges, 13 canonical definitions).
-- Total: 1,187 shipped concepts; 200-test gate.
+- Total: 1,664 shipped concepts; 265-test gate.
 
-## What's new in 1.0.2 (2026-11-16):
+## What's new in 1.0.2 (2026-11-18):
 
+- **Project mounts: your own project's knowledge joins the session.** Launch
+  a session from a directory whose design notes are an OKF bundle (the
+  bundle at `specs/`, or the bundle root itself) and the server discovers
+  it at spawn, checks it for conformance, and mounts it beside the corpus
+  — zero wiring, nothing copied into the knowledge base. It covers both
+  launch geometries (a session started inside the bundle walks upward for
+  it; the served shape — project root as cwd, bundle one level down —
+  uses the immediate-children scan). The mount is namespaced by the
+  project directory name, so its concepts read as
+  `<project>/<concept-id>` and `search_knowledge` appends its matches
+  after the corpus's own. The separation is deliberate: mount hits are
+  ranked within their own bundle's scale and never numerically merged
+  with the corpus's, and a mount never joins the code-usage lint
+  universe — a project's own prose cannot bless an invented `xp.*` name
+  or dataref path. A non-conformant bundle is refused with a message on
+  stderr rather than served, and no bundle simply means corpus-only.
+  Like every bundle-derived signal, the mount is read at spawn.
 - **Usage is per-dataref and language-weighted.** The ~400 datarefs the
   corpus's example code actually uses have their own
   `datarefs/used/<name>` pages, each carrying the master-list row and

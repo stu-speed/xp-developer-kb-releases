@@ -52,7 +52,7 @@ opencode mcp add xplane-kb --global -- xp-developer-kb mcp
 - Doc guides: 218 — 135 XPPython3 prose pages (author-granted, verbatim), 69 XLua SDK pages (MIT), 14 Laminar article link cards.
 - Examples: 197 working plugins — 80 XPPython3 demos verbatim (MIT), 117 FlyWithLua scripts by pinned link — each cross-linked to every API and dataref its code uses.
 - Curated: 37 concepts (17 patterns, 7 cross-host bridges, 13 canonical definitions).
-- Total: 1,664 shipped concepts; 265-test gate.
+- Total: 1,665 shipped concepts; 266-test gate.
 
 ## What's new in 1.0.2 (2026-11-18):
 
@@ -72,6 +72,12 @@ opencode mcp add xplane-kb --global -- xp-developer-kb mcp
   universe — a project's own prose cannot bless an invented `xp.*` name
   or dataref path. A non-conformant bundle is refused with a message on
   stderr rather than served, and no bundle simply means corpus-only.
+  The gate is strict: the bundle must load whole, so a concept that lost
+  its required `type` — or any stray markdown file — makes the project
+  invalid and it is *not* included, with the reason on stderr. No silent
+  partial mounts. Keep an OKF conformance sweep in your project's own
+  build (e.g. `make check` running okflib's `validate()` over `specs/`)
+  so a broken bundle fails your make before it can fail the mount.
   Like every bundle-derived signal, the mount is read at spawn.
 - **Usage is per-dataref and language-weighted.** The ~400 datarefs the
   corpus's example code actually uses have their own
